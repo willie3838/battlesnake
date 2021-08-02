@@ -71,9 +71,9 @@ def hello_word():
 #     return "ok"
 
 
-if __name__ == "__main__":
-    logging.getLogger("werkzeug").setLevel(logging.ERROR)
+# if __name__ == "__main__":
+#     logging.getLogger("werkzeug").setLevel(logging.ERROR)
 
-    print("Starting Battlesnake Server...")
-    port = int(os.environ.get("PORT", "8080"))
-    application.run(host="0.0.0.0", port=port, debug=True)
+#     print("Starting Battlesnake Server...")
+#     port = int(os.environ.get("PORT", "8080"))
+#     application.run(host="0.0.0.0", port=port, debug=True)
