@@ -9,7 +9,7 @@ import server_logic
 
 application = Flask(__name__)
 
-application.route("/")
+@application.route('/')
 def hello_word():
     return "hello"
 # @application.route("/", methods=['GET'])
