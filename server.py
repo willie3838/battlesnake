@@ -7,16 +7,16 @@ from flask import request
 import server_logic
 
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 
-@app.get("/")
+@application.route("/", methods=['GET'])
 def handle_info():
     """
     This function is called when you register your Battlesnake on play.battlesnake.com
     See https://docs.battlesnake.com/guides/getting-started#step-4-register-your-battlesnake
 
-    It controls your Battlesnake appearance and author permissions.
+    It controls your Battlesnake applicationearance and author permissions.
     For customization options, see https://docs.battlesnake.com/references/personalization
 
     TIP: If you open your Battlesnake URL in browser you should see this data.
@@ -24,14 +24,14 @@ def handle_info():
     print("INFO")
     return {
         "apiversion": "1",
-        "author": "",  # TODO: Your Battlesnake Username
-        "color": "#888888",  # TODO: Personalize
-        "head": "default",  # TODO: Personalize
-        "tail": "default",  # TODO: Personalize
+        "author": "BOOM",  # TODO: Your Battlesnake Username
+        "color": "#CE7575",  # TODO: Personalize
+        "head": "evil",  # TODO: Personalize
+        "tail": "curled",  # TODO: Personalize
     }
 
 
-@app.post("/start")
+@application.route("/start", methods=['POST'])
 def handle_start():
     """
     This function is called everytime your snake is entered into a game.
@@ -43,7 +43,7 @@ def handle_start():
     return "ok"
 
 
-@app.post("/move")
+@application.route("/move", methods=['POST'])
 def handle_move():
     """
     This function is called on every turn of a game. It's how your snake decides where to move.
@@ -57,7 +57,7 @@ def handle_move():
     return {"move": move}
 
 
-@app.post("/end")
+@application.route("/end", methods=['POST'])
 def end():
     """
     This function is called when a game your snake was in ends.
@@ -74,4 +74,4 @@ if __name__ == "__main__":
 
     print("Starting Battlesnake Server...")
     port = int(os.environ.get("PORT", "8080"))
-    app.run(host="0.0.0.0", port=port, debug=True)
+    application.run(host="0.0.0.0", port=port, debug=True)
